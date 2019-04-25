@@ -60,6 +60,7 @@ class ShopRepository extends ServiceEntityRepository
             ->innerJoin('s.favoritedBy', 'f')
             ->andWhere('f.user = :user')
             ->setParameter('user', $user)
+            ->orderBy('f.created_at', 'DESC')
         ;
         return $this->paginate($queryBuilder, $page, $limit);
     }
