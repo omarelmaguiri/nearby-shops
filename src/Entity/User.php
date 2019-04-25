@@ -5,11 +5,14 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @Serializer\ExclusionPolicy("all")
  */
 class User implements UserInterface, EquatableInterface, \Serializable
 {
@@ -22,6 +25,11 @@ class User implements UserInterface, EquatableInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=191, unique=true)
+     *
+     * @Serializer\Expose()
+     * @Serializer\Groups({"login", "signup", "signup_doc"})
+     *
+     * @Assert\Email(groups={"signup"})
      */
     private $email;
 
@@ -29,6 +37,18 @@ class User implements UserInterface, EquatableInterface, \Serializable
      * @ORM\Column(type="string", length=64)
      */
     private $password;
+
+    /**
+     * Plain password. Used for model validation. Must not be persisted.
+     * @var string
+     *
+     * @Serializer\Type("string")
+     * @Serializer\Expose()
+     * @Serializer\Groups({"signup_doc"})
+     *
+     * @Assert\NotBlank(groups={"signup"})
+     */
+    private $plainPassword;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\FavoriteShop", mappedBy="user", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -78,6 +98,29 @@ class User implements UserInterface, EquatableInterface, \Serializable
     {
         $this->password = $password;
 
+        return $this;
+    }
+
+    /**
+     * Gets the plain password.
+     *
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * Sets the plain password.
+     *
+     * @param string $password
+     *
+     * @return static
+     */
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
         return $this;
     }
 
