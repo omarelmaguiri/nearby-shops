@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card m-2">
         <div class="card-header">
             {{ shop.name }}
         </div>
@@ -17,10 +17,10 @@
         props: ['shop'],
         methods: {
             dislike (shop) {
-                this.$store.dispatch('nearby/dislikeShop', shop.id).then(res => this.$store.dispatch('nearby/fetchShops'));
+                this.$store.dispatch('nearby/dislikeShop', shop.id);
             },
             like (shop) {
-                this.$store.dispatch('nearby/likeShop', shop.id).then(res => this.$store.dispatch('nearby/fetchShops'));
+                this.$store.dispatch('nearby/likeShop', shop.id);
             },
         },
     }

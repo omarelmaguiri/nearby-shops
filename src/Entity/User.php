@@ -170,7 +170,7 @@ class User implements UserInterface, EquatableInterface, \Serializable
     {
         return $this->dislikedShops->filter(function ($dislikedShop) {
             $createdAt = clone $dislikedShop->getCreatedAt();
-            return new \DateTime() > $createdAt->add(new \DateInterval(DislikedShop::DISLIKE_TIME_INTERVAL));
+            return new \DateTime() < $createdAt->add(new \DateInterval(DislikedShop::DISLIKE_TIME_INTERVAL));
         });
     }
 

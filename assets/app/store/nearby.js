@@ -72,16 +72,16 @@ export default {
         },
     },
     actions: {
-        fetchShopsWithPosition ({commit}, position) {
+        fetchShopsWithPosition ({commit}, data) {
             commit('FETCHING_SHOPS');
-            return ShopAPI.getNearbyWithLatLong(position.coords.latitude, position.coords.longitude)
+            return ShopAPI.getNearbyWithLatLong(data.position.coords.latitude, data.position.coords.longitude, data.page)
                 .then(res => commit('FETCHING_SHOPS_SUCCESS', res.data))
                 .catch(err => commit('FETCHING_SHOPS_ERROR', err))
             ;
         },
-        fetchShops ({commit}) {
+        fetchShops ({commit}, page) {
             commit('FETCHING_SHOPS');
-            return ShopAPI.getNearby()
+            return ShopAPI.getNearby(page)
                 .then(res => commit('FETCHING_SHOPS_SUCCESS', res.data))
                 .catch(err => commit('FETCHING_SHOPS_ERROR', err))
             ;

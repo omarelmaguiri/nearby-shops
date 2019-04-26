@@ -57,6 +57,7 @@ class ShopController extends AbstractFOSRestController
     {
         $favoriteShopsIds = $this->getUser()->getFavoriteShops()->map(function ($favoriteShop) {return $favoriteShop->getShop()->getId();})->toArray();
         $dislikedShopsIds = $this->getUser()->getLastDislikedShops()->map(function ($dislikedShop) {return $dislikedShop->getShop()->getId();})->toArray();
+//        dump(compact('favoriteShopsIds', 'dislikedShopsIds'));die;
         return $this->em->getRepository(Shop::class)->findByLatitudeAndLongitude($latitude, $longitude, array_merge($favoriteShopsIds, $dislikedShopsIds), $page);
     }
 

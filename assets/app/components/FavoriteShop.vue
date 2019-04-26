@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card m-2">
         <div class="card-header">
             {{ shop.name }}
         </div>

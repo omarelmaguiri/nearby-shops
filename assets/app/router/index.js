@@ -13,7 +13,7 @@ let router =  new VueRouter({
         { path: '/favorite', component: Favorite, meta: { requiresAuth: true } },
         { path: '/nearby', component: Nearby, meta: { requiresAuth: true } },
         { path: '/login', component: Login },
-        { path: '*', redirect: '/login' }
+        { path: '*', redirect: '/nearby' }
     ],
 });
 

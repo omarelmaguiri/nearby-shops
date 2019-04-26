@@ -1,14 +1,19 @@
 import axios from 'axios';
 
 export default {
-    getNearby () {
-        return axios.get('/api/shops');
-    },
-    getNearbyWithLatLong (lat, long) {
+    getNearby (page) {
         return axios.get('/api/shops', {
             params: {
-              latitude: lat,
-              longitude: long
+                page: page,
+            }
+        });
+    },
+    getNearbyWithLatLong (lat, long, page) {
+        return axios.get('/api/shops', {
+            params: {
+                latitude: lat,
+                longitude: long,
+                page: page,
             }
         });
     },

@@ -1,10 +1,12 @@
 <template>
     <div>
-        <div class="row col">
-            <h1>My Preferred Shops</h1>
+        <div class="row">
+            <div class="mx-auto p-3">
+                <h1>My Preferred Shops</h1>
+            </div>
         </div>
 
-        <div class="row col">
+        <div class="row">
             <div v-if="isLoading">
                 <p>Loading...</p>
             </div>

@@ -10,8 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class DislikedShop
 {
     // The time interval for which a shop won't be displayed in the nearby shop list
-//    const DISLIKE_TIME_INTERVAL = 'PT2H';
-    const DISLIKE_TIME_INTERVAL = 'PT5M';
+    const DISLIKE_TIME_INTERVAL = 'PT2H';
 
     /**
      * @ORM\Id()
