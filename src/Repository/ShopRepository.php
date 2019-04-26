@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class ShopRepository extends ServiceEntityRepository
 {
-    const MAX_RESULTS = 10;
+    const MAX_RESULTS = 12;
 
     public function __construct(RegistryInterface $registry)
     {

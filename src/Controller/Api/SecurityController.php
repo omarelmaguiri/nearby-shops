@@ -108,4 +108,14 @@ class SecurityController extends AbstractFOSRestController
         $guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'api');
         return $this->getUser();
     }
+
+    /**
+     * @Rest\Get("/security/logout", name="logout")
+     * @return void
+     * @throws \RuntimeException
+     */
+    public function logoutAction(): void
+    {
+        throw new \RuntimeException('This should not be reached!');
+    }
 }
