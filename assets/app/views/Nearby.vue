@@ -65,7 +65,7 @@
         },
         data () {
             return {
-                page: 1,
+                page: /^#([0-9]+)$/.exec(this.$route.hash) !== null ? /^#([0-9]+)$/.exec(this.$route.hash)[1] : 1,
                 display: false
             }
         },
