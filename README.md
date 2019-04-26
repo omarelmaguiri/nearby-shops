@@ -1,6 +1,6 @@
 # DESCRIPTION
 
-The project is singe page app that lists nearby shops. it was built using PHP/Symfony 4 and Vue.js.
+The project is a singe page application that lists the nearby shops. it was built using PHP/Symfony 4 and Vue.js.
 
 Technical spec
 ---------------
